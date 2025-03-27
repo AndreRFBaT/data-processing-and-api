@@ -1,3 +1,6 @@
+<<<<<<< Updated upstream
+# Testes-Intuitive-Care
+=======
 # Testes-Intuitive-Care
 
 ## Clone the repository and run:
@@ -24,3 +27,8 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
+# To generate the requirements.txt file:
+```bash
+pip freeze > requirements.txt
+```
+>>>>>>> Stashed changes
