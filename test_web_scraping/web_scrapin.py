@@ -26,7 +26,7 @@ def obter_links_pdfs(url: str) -> list:
         href = link["href"]
         if "Anexo" in href and href.endswith(".pdf"):
             # Ajustar links relativos
-            if not href.startswith("http"): 
+            if not href.startswith("http"):
                 href = "https://www.gov.br" + href
             pdf_links.append(href)
 
