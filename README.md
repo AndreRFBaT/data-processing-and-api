@@ -1,3 +1,6 @@
+<<<<<<< Updated upstream
+# Testes-Intuitive-Care
+=======
 # Testes-Intuitive-Care
 
 ## Clone the repository and run:
@@ -28,3 +31,4 @@ pip install -r requirements.txt
 ```bash
 pip freeze > requirements.txt
 ```
+>>>>>>> Stashed changes
