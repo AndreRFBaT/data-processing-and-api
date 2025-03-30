@@ -77,7 +77,7 @@ https://cloudy-desert-751190.postman.co/workspace/Intuitive-Care-Teste-Postman~b
 
 Meu nome é **André R. F. Batista** e sou estudante de **Engenharia de Computação pela Univesp**.
 
-Fiz parte do ***prgrama de Bolsas da Compass UOL - AWS & Performance for Software Quality Engineering | QA IA.***
+Fiz parte do ***programa de Bolsas da Compass UOL - AWS & Performance for Software Quality Engineering | QA IA.***
 
 Faço **iniciação científica na USP - IFSC - São Carlos-SP** no projeto ***CIERMag (Centro de Imagens e Espectroscopia por Ressonância Magnética)***
 
