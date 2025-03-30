@@ -1,3 +1,4 @@
+```sql
 -- Soma dos valores encontrados no último trimestre
 SELECT
    o.registro_ans,
@@ -32,3 +33,4 @@ WHERE
 GROUP BY o.registro_ans, o.razao_social, d.descricao
 ORDER BY total_despesa DESC  -- Ordenação pela soma total
 LIMIT 10;
+```
