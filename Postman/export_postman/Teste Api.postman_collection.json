@@ -1,0 +1,464 @@
+{
+	"info": {
+		"_postman_id": "5e5a69e9-354f-4ff3-b242-08475fd4671a",
+		"name": "Teste Api",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33856397",
+		"_collection_link": "https://cloudy-desert-751190.postman.co/workspace/Intuitive-Care-Teste-Postman~b8870577-b5ef-4a87-bbe2-8cd8822e7217/collection/33856397-5e5a69e9-354f-4ff3-b242-08475fd4671a?action=share&source=collection_link&creator=33856397"
+	},
+	"item": [
+		{
+			"name": "Busca de Operadoras.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array');",
+							"    responseData.forEach(function(item) {",
+							"        pm.expect(item.razao_social).to.exist;",
+							"        pm.expect(item.nome_fantasia).to.exist;",
+							"        pm.expect(item.cnpj).to.exist;",
+							"        pm.expect(item.registro_ans).to.exist;",
+							"        pm.expect(item.modalidade).to.exist;",
+							"        pm.expect(item.uf).to.exist;",
+							"        pm.expect(item.cidade).to.exist;",
+							"        pm.expect(item.endereco_eletronico).to.exist;",
+							"        pm.expect(item.ddd).to.exist;",
+							"        pm.expect(item.telefone).to.exist;",
+							"    });",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Verify that the endereco_eletronico is in a valid email format\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    responseData.forEach(function(item) {",
+							"        pm.expect(item.endereco_eletronico).to.be.a('string').and.to.match(/\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b/);",
+							"    });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(300);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/buscar?nome={{nome_operadora}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "{{nome_operadora}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Sem Operadoras Existentes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Fixed the test to check for the correct property",
+							"pm.test(\"Nenhuma operadora encontrada com o nome fornecido.\", function () {",
+							"  var jsonData = pm.response.json();",
+							"  // Verificando se a resposta contém uma mensagem de erro quando o campo nome é vazio",
+							"  pm.expect(jsonData.detail).to.eql(\"Nenhuma operadora encontrada com o nome fornecido.\");",
+							"});",
+							"",
+							"pm.test(\"Response status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Ensure the response content type is application/json\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+							"});",
+							"",
+							"pm.test(\"Response body should have the expected schema\", function () {",
+							"    const responseData = pm.response.json();",
+							"",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.detail).to.exist.and.to.be.a('string');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/buscar?nome=xx",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "xx"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar e Retorna Apenas Uma Operadora",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array');",
+							"    responseData.forEach(function(item) {",
+							"        pm.expect(item).to.have.property('razao_social');",
+							"        pm.expect(item).to.have.property('nome_fantasia');",
+							"        pm.expect(item).to.have.property('cnpj');",
+							"        pm.expect(item).to.have.property('registro_ans');",
+							"        pm.expect(item).to.have.property('modalidade');",
+							"        pm.expect(item).to.have.property('uf');",
+							"        pm.expect(item).to.have.property('cidade');",
+							"        pm.expect(item).to.have.property('endereco_eletronico');",
+							"        pm.expect(item).to.have.property('ddd');",
+							"        pm.expect(item).to.have.property('telefone');",
+							"    });",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Presence of 'Content-Type' header in the response\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array');",
+							"    ",
+							"    responseData.forEach(function(item) {",
+							"        pm.expect(item).to.have.property('razao_social');",
+							"        pm.expect(item).to.have.property('nome_fantasia');",
+							"        pm.expect(item).to.have.property('cnpj');",
+							"        pm.expect(item).to.have.property('registro_ans');",
+							"        pm.expect(item).to.have.property('modalidade');",
+							"        pm.expect(item).to.have.property('uf');",
+							"        pm.expect(item).to.have.property('cidade');",
+							"        pm.expect(item).to.have.property('endereco_eletronico');",
+							"        pm.expect(item).to.have.property('ddd');",
+							"        pm.expect(item).to.have.property('telefone');",
+							"    });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/buscar?nome={{nome_unico}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "{{nome_unico}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Vazia de Operadora",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response status code is 400\", function () {",
+							"    pm.expect(pm.response.code).to.equal(400);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required field - detail\", function () {",
+							"  const responseData = pm.response.json();",
+							"",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData.detail).to.exist;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Detail is a non-empty string\", function () {",
+							"  const responseData = pm.response.json();",
+							"",
+							"  pm.expect(responseData).to.be.an('object');",
+							"  pm.expect(responseData.detail).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Detail should not be empty\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/buscar?nome=",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Usando Números",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields\", function () {",
+							"  const responseData = pm.response.json();",
+							"",
+							"  pm.expect(responseData).to.be.an('array');",
+							"  responseData.forEach(function(item) {",
+							"    pm.expect(item).to.include.all.keys('razao_social', 'nome_fantasia', 'cnpj', 'registro_ans', 'modalidade', 'uf', 'cidade', 'endereco_eletronico', 'ddd', 'telefone');",
+							"  });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/buscar?nome=00",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca Caracteres Especiais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.to.have.status(200));",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+							"  ",
+							"  responseData.forEach(function(item) {",
+							"    pm.expect(item).to.have.property('razao_social');",
+							"    pm.expect(item).to.have.property('nome_fantasia');",
+							"    pm.expect(item).to.have.property('cnpj');",
+							"    pm.expect(item).to.have.property('registro_ans');",
+							"    pm.expect(item).to.have.property('modalidade');",
+							"    pm.expect(item).to.have.property('uf');",
+							"    pm.expect(item).to.have.property('cidade');",
+							"    pm.expect(item).to.have.property('endereco_eletronico');",
+							"    pm.expect(item).to.have.property('ddd');",
+							"    pm.expect(item).to.have.property('telefone');",
+							"  });",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Modalidade is a non-empty string\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  pm.expect(responseData).to.be.an('array');",
+							"  responseData.forEach(function(item) {",
+							"    pm.expect(item.modalidade).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Modalidade should not be empty\");",
+							"  });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Presence of Content-Type header in the response\", function () {",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.exist;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/buscar?nome=*",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "*"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}

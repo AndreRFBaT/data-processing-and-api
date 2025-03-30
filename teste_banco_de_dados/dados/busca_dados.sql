@@ -1,3 +1,6 @@
+-- Scripts para as buscas no banco de dados.
+
+
 -- Busca por trimestre e ano
 SELECT
    o.registro_ans,

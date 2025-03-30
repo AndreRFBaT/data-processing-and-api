@@ -97,7 +97,7 @@ SELECT * FROM operadoras LIMIT 10;
 
 ### Saída do comando:
 
-![alt text](image.png)
+![alt text](/teste_banco_de_dados/imagens_tarefa_DB/image.png)
 
 ```bash
 postgres=# SELECT * FROM demonstrativos_contabeis LIMIT 10;
@@ -117,7 +117,7 @@ postgres=# SELECT * FROM demonstrativos_contabeis LIMIT 10;
 ```
 
 ### No DBeaver
-![alt text](<prova do operadoras estão funcionando.png>)
+![alt text](</teste_banco_de_dados/imagens_tarefa_DB/prova do operadoras estão funcionando.png>)
 ---
 
 <br></br>
@@ -162,11 +162,11 @@ LIMIT 10;
 ### Resultado:
 
 ### No DBeaver
-![alt text](<saida demonstrativos beaver.png>)
+![alt text](</teste_banco_de_dados/imagens_tarefa_DB/saida demonstrativos beaver.png>)
 
 ### No terminal
 
-![alt text](image-4.png)
+![alt text](/teste_banco_de_dados/imagens_tarefa_DB/image-4.png)
 
 ```sql
  registro_ans |                       razao_social                       |                                      descricao                                       |    data    | total_despesa  
@@ -212,14 +212,14 @@ LIMIT 10;
 ### Resultado:
 
 ### No DBeaver:
-![alt text](image-1.png)
+![alt text](/teste_banco_de_dados/imagens_tarefa_DB/image-1.png)
 
-![alt text](image-2.png)
+![alt text](/teste_banco_de_dados/imagens_tarefa_DB/image-2.png)
 
 
 ### No terminal:
 
-![alt text](image-3.png)
+![alt text](/teste_banco_de_dados/imagens_tarefa_DB/image-3.png)
 
 ```sql
  registro_ans |                       razao_social                       |                                      descricao                                       |    data    | total_despesa  
