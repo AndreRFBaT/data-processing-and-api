@@ -82,6 +82,7 @@ ___
   <a href="https://www.linkedin.com/in/andre-rodrigues-de-freitas-batista/" target="_blank">
     <img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" target="_blank">
   </a>
+  <a href="https://gitlab.com/AndreRFBaT" target="_blank"><img src="https://img.shields.io/badge/-GitLab-FCA121?style=for-the-badge&logo=gitlab&logoColor=white" alt="GitLab" target="_blank"></a>
   <a href="https://github.com/AndreRFBaT" target="_blank"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
   <a href="https://mail.google.com/mail/?view=cm&fs=1&to=andrerfbatista@gmail.com" target="_blank">
   <img src="https://img.shields.io/badge/-Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
