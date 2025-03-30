@@ -42,10 +42,15 @@ def substituir_abreviacoes(df):
     Returns:
         pd.DataFrame: O DataFrame com as abreviações substituídas.
     """
-    # Dicionário com abreviações e suas descrições
+    # Dicionário com abreviações e suas descrições atualizadas
     legenda = {
-        "OD": "Óptico Direito",
-        "AMB": "Ambulatório",
+        "OD": "Seg. Odontológica",
+        "AMB": "Seg. Ambulatorial",
+        "HCO": "Seg. Hospitalar Com Obstetrícia",
+        "HSO": "Seg. Hospitalar Sem Obstetrícia",
+        "REF": "Plano Referência",
+        "PAC": "Procedimento de Alta Complexidade",
+        "DUT": "Diretriz de Utilização"
     }
 
     # Substituir as abreviações no conteúdo do DataFrame
@@ -55,6 +60,7 @@ def substituir_abreviacoes(df):
     df.rename(columns=lambda x: legenda.get(x, x), inplace=True)
 
     return df
+
 
 def salvar_csv(dados, nome_arquivo):
     """Salva os dados extraídos em um arquivo CSV.
