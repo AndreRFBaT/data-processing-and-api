@@ -1,7 +1,27 @@
 
 # Testes-Intuitive-Care
 
-## Clone the repository and run:
+**Repositório organizado em diretórios, estruturado conforme boas práticas de desenvolvimento de software, contendo documentos, imagens e instruções sobre as tarefas realizadas.**
+
+## Testes realizados e links para os resultados obtidos e documentados:
+
+**1.** [Link para tarefa de WebScraping](https://github.com/AndreRFBaT/Testes-Intuitive-Care/blob/main/test_web_scraping/Documento_webscraping.md)
+
+**2** [Link para tarefa transformação de dados](https://github.com/AndreRFBaT/Testes-Intuitive-Care/blob/main/test_transformacao_dados/Documento_transformacao_dados.md)
+
+**3.** [Link com o documento sobre a tarefa do banco de dados](https://github.com/AndreRFBaT/Testes-Intuitive-Care/blob/main/teste_banco_de_dados/informa%C3%A7%C3%B5es_import_e_scripts_DB.md)
+
+  * [Script Sql - Busca de dados](https://github.com/AndreRFBaT/Testes-Intuitive-Care/blob/main/teste_banco_de_dados/dados/busca_dados.sql)
+  
+  * [Script Sql - Busca e soma dos valores encontrados por período](https://github.com/AndreRFBaT/Testes-Intuitive-Care/blob/main/teste_banco_de_dados/dados/busca_soma_valores_encontrados.sql)
+  
+**4.** [Link para tarefa de criação de API e Servidor](https://github.com/AndreRFBaT/Testes-Intuitive-Care/blob/main/test_api/Documento_Api.md)
+
+**5.** [Link para tarefa com Postman](https://github.com/AndreRFBaT/Testes-Intuitive-Care/blob/main/Postman/Documento_postman.md)
+
+---
+
+# Clone the repository and run:
 
 1- Clonar no repositorio:
 ```bash
@@ -89,3 +109,4 @@ ___
 </a>
 
  </div>
+ 
