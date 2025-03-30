@@ -1,3 +1,4 @@
+
 # Testes-Intuitive-Care
 
 ## Clone the repository and run:
@@ -30,6 +31,7 @@ pip install -r requirements.txt
 # To generate the requirements.txt file:
 ```bash
 pip freeze > requirements.txt
+
 ```
 
 # To run the application:
